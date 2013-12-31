@@ -29,8 +29,8 @@ class StowService extends BaseApplicationComponent
         $model = new Stow_CacheRecord;
         $model->hash = $opts['hash'];
         $model->key = $opts['key'];
-        $model->cachedContent = $opts['cachedContent'];
         $model->url = $opts['url'];
+        $model->cachedContent = $opts['cachedContent'];
         $model->save();
     }
 

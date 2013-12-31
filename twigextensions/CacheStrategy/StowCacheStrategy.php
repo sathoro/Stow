@@ -12,10 +12,16 @@ class StowCacheStrategy
     {
         $key = "";
 
-        /*
         if (!isset($opts['entry']) && !isset($opts['entries']) && !isset($opts['section']) && !isset($opts['user']) && !isset($opts['id']))
         {
             throw new Exception(Craft::t("Must specify at least one of the following parameters: entry, entries, section, user, or id!"));
+        }
+
+        if ((isset($opts['freshAdmin']) && $opts['freshAdmin'] === true && craft()->userSession->isAdmin()) || 
+            (isset($opts['freshUser']) && $opts['freshUser'] === true && craft()->userSession->isLoggedIn()) ||
+            (isset($opts['fresh']) && $opts['fresh'] === true))
+        {
+            return false;
         }
 
         if (isset($opts['entry']))
@@ -25,7 +31,7 @@ class StowCacheStrategy
                 throw new Exception(Craft::t("The supplied entry is invalid, must be an EntryModel."));
             }
 
-            $key .= $this->hashObject($opts['entry'], "EntryModel");
+            $key .= $this->hashObject($opts['entry']);
         }
 
         if (isset($opts['entries'])) 
@@ -42,7 +48,7 @@ class StowCacheStrategy
                     throw new Exception(Craft::t("Elements of the array passed to entries must be EntryModel objects."));
                 }
 
-                $key .= $this->hashObject($entry, "EntryModel");
+                $key .= $this->hashObject($entry);
             }
         }
 
@@ -53,17 +59,13 @@ class StowCacheStrategy
                 throw new Exception(Craft::t("The supplied user is invalid, must be a UserModel."));
             }
 
-            $key .= $this->hashObject($opts['user'], "UserModel");
-        }*/
+            $key .= $this->hashObject($opts['user']);
+        }
 
         if (isset($opts['id']))
         {
             $this->id = $opts['id'];
             $key .= "{$opts['id']}";       
-        }
-        else 
-        {
-            throw new Exception("You must supply an ID!");
         }
 
         if (isset($opts['global']) && !$opts['global'])
@@ -71,14 +73,15 @@ class StowCacheStrategy
             $key .= "{$_SERVER['REQUEST_URI']}";
             $this->url = $_SERVER['REQUEST_URI'];
         }
+
         return sha1($key);
     }
 
-    public function hashObject($obj, $type = "")
+    public function hashObject($obj)
     {
         $id = $obj->id;
-        $updated = strtotime($obj->dateUpdated);
-        return $id . $updated . $type;
+        $updated = $obj->dateUpdated->format('U');
+        return $id . $updated . get_class($obj);
     }
 
     public function saveBlock($hash, $body)
@@ -95,6 +98,7 @@ class StowCacheStrategy
 
     public function fetchBlock($key)
     {
+        if ($key === false) return false;
         return craft()->stow->fetchCache($key);
     }
 }

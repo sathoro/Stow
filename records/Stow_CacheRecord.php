@@ -12,10 +12,17 @@ class Stow_CacheRecord extends BaseRecord
     public function defineAttributes()
     {
         return array(
-            'key'               => array(AttributeType::String, 'required' => true, 'unique' => true),
-            'hash'              => array(AttributeType::String, 'required' => true, 'unique' => true),
-            'url'              => AttributeType::String,
-            'cachedContent'     => array('type' => AttributeType::String, 'column' => 'mediumtext')
+            'key'           => AttributeType::String,
+            'hash'          => array(AttributeType::String, 'required' => true, 'unique' => true),
+            'url'           => AttributeType::String,
+            'cachedContent' => array('type' => AttributeType::String, 'column' => 'mediumtext')
+        );
+    }
+
+    public function defineIndexes()
+    {
+        return array(
+            array('columns' => array('hash'), 'unique' => true),
         );
     }
 }
