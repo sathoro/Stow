@@ -5,7 +5,7 @@ A plug-in for [Craft CMS](http://buildwithcraft.com/).
 
 With Stow you can cache parts of your webpage for later retrieval. This allows your server to do less processing and your visitors to see your content faster. Everyone is happier with Stow :)
 
-    {% cache {global: true, id: 'all the entries'} %}
+    {% cache {global: false, id: 'home-page'} %}
         {% for entry in craft.entries.find() %}
             {{ entry.title }}
         {% endfor %}
