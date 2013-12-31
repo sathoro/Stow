@@ -18,6 +18,12 @@ Parameter                | Type    | Default     | Description
 `global`                 | boolean  | true | If set to true the cache will be globally accessible, if set to false the cache will be dependent on the URL.
 `id`                     | string | NULL        | Cached items are tied to their ID. If the ID is not found in the database then a new cache is created.
 
+Simply wrap the content that you would like to be cached as follows:
+
+    {% cache {id: 'my-id'} %}
+        this text will get cached until the id changes
+    {% endcache %}
+
 Setup
 ====
 
