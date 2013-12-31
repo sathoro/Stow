@@ -27,4 +27,4 @@ Example of caching all your entries:
 Setup
 ====
 
-Upload all files to craft/plugins and then active the plugin from your control panel.
+Upload all files to craft/plugins and then activate the plugin from your control panel. No further set-up required.
