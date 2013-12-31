@@ -1,4 +1,4 @@
-Usage
+Stow
 ====
 
 With Stow you can cache parts of your webpage for later retrieval. This allows your server to do less processing and your visitors to see your content faster. Everyone is happier with Stow :)
