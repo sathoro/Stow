@@ -5,16 +5,15 @@ With Stow you can cache parts of your webpage for later retrieval. This allows y
 
 Currently Stow can take up to 2 parameters: global and id. You must provide at least an id.
 
-Global - optional
+*Global* - optional
 
 - Type: boolean (true or false)
 - Default: true
 - Description: If set to true the cache will be globally accessible, if set to false the cache will be dependent on the URL.
 
-ID - required
+*ID* - required
 
 - Type: string
-- Default: null
 - Description: Cached items are tied to their ID. If the ID is not found in the database then a new cache is created.
 
 Example of caching all your entries:
