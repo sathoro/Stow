@@ -1,6 +1,8 @@
 Stow
 ====
 
+A plug-in for [Craft CMS](http://buildwithcraft.com/).
+
 With Stow you can cache parts of your webpage for later retrieval. This allows your server to do less processing and your visitors to see your content faster. Everyone is happier with Stow :)
 
     {% cache {global: true, id: 'all the entries'} %}
@@ -9,18 +11,12 @@ With Stow you can cache parts of your webpage for later retrieval. This allows y
         {% endfor %}
     {% endcache %}
 
-Currently Stow can take up to 2 parameters: global and id. You must provide at least an id.
+Currently Stow can take up to 2 parameters: **global** and **id**. **id** is required.
 
-*Global* - optional
-
-- Type: boolean (true or false)
-- Default: true
-- Description: If set to true the cache will be globally accessible, if set to false the cache will be dependent on the URL.
-
-*ID* - required
-
-- Type: string
-- Description: Cached items are tied to their ID. If the ID is not found in the database then a new cache is created.
+Parameter                | Type    | Default     | Description
+:----------------------- | :------ | :---------- | :------------------------------------------------------
+`global`                 | boolean  | true | If set to true the cache will be globally accessible, if set to false the cache will be dependent on the URL.
+`id`                     | string | NULL        | Cached items are tied to their ID. If the ID is not found in the database then a new cache is created.
 
 Setup
 ====
