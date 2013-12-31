@@ -1,13 +1,3 @@
-Stow
-====
-
-Craft CMS plugin for caching page fragments.
-
-Setup
-====
-
-Upload all files to craft/plugins and then active the plugin from your control panel.
-
 Usage
 ====
 
@@ -29,8 +19,13 @@ ID - required
 
 Example of caching all your entries:
 
- {% cache {global: true, id: 'all the entries'} %}
-  {% for entry in craft.entries.find() %}
-   {{ entry.title }}
-  {% endfor %}
- {% endcache %}
+    {% cache {global: true, id: 'all the entries'} %}
+        {% for entry in craft.entries.find() %}
+            {{ entry.title }}
+        {% endfor %}
+    {% endcache %}
+
+Setup
+====
+
+Upload all files to craft/plugins and then active the plugin from your control panel.
