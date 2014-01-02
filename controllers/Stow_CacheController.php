@@ -9,7 +9,7 @@ class Stow_CacheController extends BaseController
         $id = craft()->request->getRequiredParam('id');
 
         if (craft()->stow->deleteCacheById($id)) {
-            craft()->userSession->setNotice(Craft::t('Action deleted.'));
+            craft()->userSession->setNotice(Craft::t('Cache deleted.'));
         }
         else  {
             craft()->userSession->setError(Craft::t("Couldn't delete cache."));
