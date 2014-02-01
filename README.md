@@ -89,3 +89,8 @@ Setup
 ---
 
 Upload all files to a folder named 'stow' in the plugin directory and then activate from your control panel. No further set-up required.
+
+License
+---
+
+This project is licensed under the terms of the MIT license.
