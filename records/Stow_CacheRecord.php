@@ -18,11 +18,4 @@ class Stow_CacheRecord extends BaseRecord
             'cachedContent' => array('type' => AttributeType::String, 'column' => 'mediumtext')
         );
     }
-
-    public function defineIndexes()
-    {
-        return array(
-            array('columns' => array('hash'), 'unique' => true),
-        );
-    }
 }
